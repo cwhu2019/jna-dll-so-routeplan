@@ -1,12 +1,12 @@
-package maoko.dllSolibLoad.lib.load;
+package cwhu.dllSolibLoad.lib.load;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.sun.jna.Library;
 
-import maoko.common.StringUtil;
-import maoko.common.exception.DataIsNullException;
+import cwhu.common.StringUtil;
+import cwhu.common.exception.DataIsNullException;
 
 /**
  * lib factory
