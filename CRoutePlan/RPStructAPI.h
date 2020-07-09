@@ -23,7 +23,6 @@ struct RP_DLLSPEC COORD3D
     double dy;
     double dz;
 
-	COORD3D(double x = 0.0, double y = 0.0, double z = 0.0);
 };
 struct RP_DLLSPEC ADAS_INFO
 {
@@ -35,14 +34,12 @@ struct RP_DLLSPEC ADAS_INFO
 struct RP_DLLSPEC COORD3DEx : public COORD3D
 {
 	ADAS_INFO stAdasInfo;
-	COORD3DEx(double x = 0.0, double y = 0.0, double z = 0.0);
 };
 
 struct RP_DLLSPEC RPPlace
 {
 	COORD3D crd;
     double dAngle;
-    RPPlace();
 };
 
 
@@ -52,7 +49,6 @@ struct RP_DLLSPEC RPLane
 	unsigned long long iLaneID;
     vector<COORD3DEx> vecShape;
 	bool bNeedChangeLane;//是否需要变道
-    RPLane();
 };
 
 
@@ -63,7 +59,6 @@ struct RP_DLLSPEC RPLink
 	vector<COORD3DEx> vecShape;//link形点
 
 	vector<RPLane> vecLane;//link包含的lane，link不存在变道时，大小为1;存在变道时，大小>1
-	RPLink();
 };
 //路径规划结果结构体
 struct RP_DLLSPEC RPResult
@@ -72,8 +67,6 @@ struct RP_DLLSPEC RPResult
     vector<RPPlace> vecRPPlace;
     vector<RPLink> vecLink;
     double dRouteLength;
-    RPResult();
-    void clear();
 };
 
 //路径规划状态
