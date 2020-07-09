@@ -34,6 +34,12 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.nativelibs4java</groupId>
+			<artifactId>jnaerator-runtime</artifactId>
+			<version>0.12</version>
+		</dependency>
 	</dependencies>
 
 	<!-- 防止update更新时 工程编译环境发生改变 -->
