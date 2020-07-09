@@ -13,33 +13,39 @@ import java.util.List;
  */
 public class RPResultJNA extends Structure {
 	public byte RPFlag;
-	/** C type : RPPlacesJNA */
-	public RPPlaceJNA RPPlaces;
+	/** C type : RPPlaceJNA* */
+	public RPPlaceJNA.ByReference RPPlace;
+	public int iPlaceSize;
 	/** C type : RPLinkJNA* */
 	public RPLinkJNA.ByReference linkArray;
+	public int iLinkSize;
 	public double dRouteLength;
 	public RPResultJNA() {
 		super();
 	}
 	@Override
 	protected List<String> getFieldOrder() {
-		return Arrays.asList("RPFlag", "RPPlaces", "linkArray", "dRouteLength");
+		return Arrays.asList("RPFlag", "RPPlace", "iPlaceSize", "linkArray", "iLinkSize", "dRouteLength");
 	}
 	/**
-	 * @param RPPlaces C type : RPPlacesJNA<br>
+	 * @param RPPlace C type : RPPlaceJNA*<br>
 	 * @param linkArray C type : RPLinkJNA*
 	 */
-	public RPResultJNA(byte RPFlag, RPPlaceJNA RPPlaces, RPLinkJNA.ByReference linkArray, double dRouteLength) {
+	public RPResultJNA(byte RPFlag, RPPlaceJNA.ByReference RPPlace, int iPlaceSize, RPLinkJNA.ByReference linkArray, int iLinkSize, double dRouteLength) {
 		super();
 		this.RPFlag = RPFlag;
-		this.RPPlaces = RPPlaces;
+		this.RPPlace = RPPlace;
+		this.iPlaceSize = iPlaceSize;
 		this.linkArray = linkArray;
+		this.iLinkSize = iLinkSize;
 		this.dRouteLength = dRouteLength;
 	}
 	public static class ByReference extends RPResultJNA implements Structure.ByReference {
-		
+
 	};
 	public static class ByValue extends RPResultJNA implements Structure.ByValue {
-		
+
 	};
 }
+
+

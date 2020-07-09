@@ -4,6 +4,7 @@ import com.sun.jna.*;
 
 import cwhu.dllSolibLoad.lib.load.LibLoad;
 import cwhu.dllSolibLoad.lib.model.struct.RPPlaceJNA;
+import cwhu.dllSolibLoad.lib.model.struct.RPResultJNA;
 
 /**
  * 加载动态库接口
@@ -34,5 +35,5 @@ public interface routeplanEngineLib extends Library {
 ///
   //  RpStatus RP_RoutePlan_ParkingLot(Vector<RpPlace.ByValue> vecRpPlace, RpResult.ByReference stRpResult);
     //int RP_RoutePlan_P2P(Pointer RpPlaces, RpResult.ByReference stRpResult);
-    int RP_RoutePlan_P2P(RPPlaceJNA[] RpPlaces, int placeSize);
+    int RP_RoutePlan_P2P(RPPlaceJNA[] RpPlaces, int placeSize, RPResultJNA.ByReference stRpResult);
 }

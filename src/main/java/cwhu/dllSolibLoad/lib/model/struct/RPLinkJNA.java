@@ -16,29 +16,34 @@ public class RPLinkJNA extends Structure {
 	public NativeLong iLinkID;
 	/** C type : Coord3DJNA* */
 	public Coord3DJNA.ByReference coordArray;
+	public int iCoordSize;
 	/** C type : RPLaneJNA* */
 	public RPLaneJNA.ByReference laneArray;
+	public int iLaneSize;
 	public RPLinkJNA() {
 		super();
 	}
 	@Override
 	protected List<String> getFieldOrder() {
-		return Arrays.asList("iLinkID", "coordArray", "laneArray");
+		return Arrays.asList("iLinkID", "coordArray", "iCoordSize", "laneArray", "iLaneSize");
 	}
 	/**
 	 * @param coordArray C type : Coord3DJNA*<br>
 	 * @param laneArray C type : RPLaneJNA*
 	 */
-	public RPLinkJNA(NativeLong iLinkID, Coord3DJNA.ByReference coordArray, RPLaneJNA.ByReference laneArray) {
+	public RPLinkJNA(NativeLong iLinkID, Coord3DJNA.ByReference coordArray, int iCoordSize, RPLaneJNA.ByReference laneArray, int iLaneSize) {
 		super();
 		this.iLinkID = iLinkID;
 		this.coordArray = coordArray;
+		this.iCoordSize = iCoordSize;
 		this.laneArray = laneArray;
+		this.iLaneSize = iLaneSize;
 	}
 	public static class ByReference extends RPLinkJNA implements Structure.ByReference {
-		
+
 	};
 	public static class ByValue extends RPLinkJNA implements Structure.ByValue {
-		
+
 	};
 }
+

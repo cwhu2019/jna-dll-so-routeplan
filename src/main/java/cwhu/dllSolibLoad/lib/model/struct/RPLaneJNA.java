@@ -16,25 +16,28 @@ public class RPLaneJNA extends Structure {
 	public NativeLong iLaneID;
 	/** C type : Coord3DJNA* */
 	public Coord3DJNA.ByReference coordArray;
+	public int iCoordSize;
 	public byte bNeedChangeLane;
 	public RPLaneJNA() {
 		super();
 	}
 	@Override
 	protected List<String> getFieldOrder() {
-		return Arrays.asList("iLaneID", "coordArray", "bNeedChangeLane");
+		return Arrays.asList("iLaneID", "coordArray", "iCoordSize", "bNeedChangeLane");
 	}
 	/** @param coordArray C type : Coord3DJNA* */
-	public RPLaneJNA(NativeLong iLaneID, Coord3DJNA.ByReference coordArray, byte bNeedChangeLane) {
+	public RPLaneJNA(NativeLong iLaneID, Coord3DJNA.ByReference coordArray, int iCoordSize, byte bNeedChangeLane) {
 		super();
 		this.iLaneID = iLaneID;
 		this.coordArray = coordArray;
+		this.iCoordSize = iCoordSize;
 		this.bNeedChangeLane = bNeedChangeLane;
 	}
 	public static class ByReference extends RPLaneJNA implements Structure.ByReference {
-		
+
 	};
 	public static class ByValue extends RPLaneJNA implements Structure.ByValue {
-		
+
 	};
 }
+

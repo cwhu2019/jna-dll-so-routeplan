@@ -6,6 +6,7 @@ import cwhu.dllSolibLoad.lib.load.LibFactory;
 import cwhu.dllSolibLoad.lib.load.routeplanEngine.routeplanEngineLib;
 import cwhu.dllSolibLoad.lib.model.struct.Coord3DJNA;
 import cwhu.dllSolibLoad.lib.model.struct.RPPlaceJNA;
+import cwhu.dllSolibLoad.lib.model.struct.RPResultJNA;
 import cwhu.dllSolibLoad.util.ConvertUtils;
 import cwhu.sdk.SDKCommon;
 
@@ -47,8 +48,8 @@ public class libApp {
 				RpPlaceArray[0].writeField("angle",-1);
 				RpPlaceArray[1].writeField("coord", coordEnd);
 				RpPlaceArray[1].writeField("angle",-1);
-				//RpResult.ByReference rpResult = new RpResult.ByReference();
-				int istatus = rpLib.RP_RoutePlan_P2P(RpPlaceArray, placeSize);
+				RPResultJNA.ByReference rpResult = new RPResultJNA.ByReference();
+				int istatus = rpLib.RP_RoutePlan_P2P(RpPlaceArray, placeSize, rpResult);
 
 				int iDestroyStatus = rpLib.RC_Destroy();
 				System.out.println("RC_Destroy result:" + iDestroyStatus);
