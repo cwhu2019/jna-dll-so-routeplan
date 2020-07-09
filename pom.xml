@@ -44,7 +44,7 @@
 
 	<!-- 防止update更新时 工程编译环境发生改变 -->
 	<build>
-		<finalName>routePlanLibLoad</finalName>
+		<finalName>cwhu.routePlanLibLoad</finalName>
 		<defaultGoal>compile</defaultGoal>
 		<plugins>
 			<plugin>
