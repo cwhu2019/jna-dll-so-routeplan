@@ -10,7 +10,6 @@ import cwhu.dllSolibLoad.lib.model.struct.Coord3DJNA;
 import cwhu.dllSolibLoad.lib.model.struct.RPPlaceJNA;
 import cwhu.dllSolibLoad.lib.model.struct.RPResultJNA;
 import cwhu.dllSolibLoad.util.ConvertUtils;
-import cwhu.sdk.SDKCommon;
 
 /**
  * Hello world!
@@ -22,7 +21,7 @@ public class libApp {
 		try {
 			// 初始化
 			AppRunPathUitl.initRunPath(libApp.class);
-			SDKCommon.init();
+			//SDKCommon.init();
 			JnaLibCall.load();
 
 			routeplanEngineLib rpLib = LibFactory.get(routeplanEngineLib.class);
