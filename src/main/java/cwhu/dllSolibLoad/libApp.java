@@ -1,5 +1,7 @@
 package cwhu.dllSolibLoad;
 
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
 import cwhu.common.system.AppRunPathUitl;
 import cwhu.dllSolibLoad.lib.load.JnaLibCall;
 import cwhu.dllSolibLoad.lib.load.LibFactory;
@@ -10,11 +12,10 @@ import cwhu.dllSolibLoad.lib.model.struct.RPResultJNA;
 import cwhu.dllSolibLoad.util.ConvertUtils;
 import cwhu.sdk.SDKCommon;
 
-import java.util.Vector;
-
 /**
  * Hello world!
  *
+ * @author cwhu2
  */
 public class libApp {
 	public static void main(String[] args) {
@@ -50,6 +51,14 @@ public class libApp {
 				RpPlaceArray[1].writeField("angle",-1);
 				RPResultJNA.ByReference rpResult = new RPResultJNA.ByReference();
 				int istatus = rpLib.RP_RoutePlan_P2P(RpPlaceArray, placeSize, rpResult);
+
+				//手动释放C++申请的内存
+				rpResult.freeMem();
+				Pointer pRpResult = rpResult.getPointer();
+				long peer = Pointer.nativeValue(pRpResult);
+				Native.free(peer);
+				//避免Memory对象被GC时重复执行Nativ.free()方法
+				Pointer.nativeValue(pRpResult, 0);
 
 				int iDestroyStatus = rpLib.RC_Destroy();
 				System.out.println("RC_Destroy result:" + iDestroyStatus);

@@ -1,5 +1,7 @@
 package cwhu.dllSolibLoad.lib.model.struct;
 
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
 import java.util.Arrays;
@@ -40,9 +42,25 @@ public class RPResultJNA extends Structure {
 		this.iLinkSize = iLinkSize;
 		this.dRouteLength = dRouteLength;
 	}
+	public void freeMem(){
+		//手动释放内存
+		Pointer pRpPlace = RPPlace.getPointer();
+		long peerRpPlace = Pointer.nativeValue(pRpPlace);
+		Native.free(peerRpPlace);
+		Pointer.nativeValue(pRpPlace, 0);
+
+		linkArray.freeMem();
+		Pointer pLinkArray = linkArray.getPointer();
+		long peerLinkArray = Pointer.nativeValue(pLinkArray);
+		Native.free(peerLinkArray);
+		Pointer.nativeValue(pLinkArray, 0);
+
+
+	}
 	public static class ByReference extends RPResultJNA implements Structure.ByReference {
 
 	};
+
 	public static class ByValue extends RPResultJNA implements Structure.ByValue {
 
 	};

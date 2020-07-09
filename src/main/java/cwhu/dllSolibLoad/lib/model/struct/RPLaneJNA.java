@@ -1,6 +1,8 @@
 package cwhu.dllSolibLoad.lib.model.struct;
 
+import com.sun.jna.Native;
 import com.sun.jna.NativeLong;
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
 import java.util.Arrays;
@@ -39,5 +41,13 @@ public class RPLaneJNA extends Structure {
 	public static class ByValue extends RPLaneJNA implements Structure.ByValue {
 
 	};
+
+	public void freeMem(){
+		//手动释放内存
+		Pointer pCoordArray = coordArray.getPointer();
+		long peerCoordArray = Pointer.nativeValue(pCoordArray);
+		Native.free(peerCoordArray);
+		Pointer.nativeValue(pCoordArray, 0);
+	}
 }
 
