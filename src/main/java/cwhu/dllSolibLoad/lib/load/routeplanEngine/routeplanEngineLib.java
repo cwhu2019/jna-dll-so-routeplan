@@ -12,7 +12,8 @@ import cwhu.dllSolibLoad.lib.model.struct.RPResultJNA;
  * @author fanpei
  *
  */
-@LibLoad(linuxName = "librouteplanEngine", windowsName = "routeplanEngine")
+//emg_routeplanengine
+@LibLoad(linuxName = "RouteCalculation_shared", windowsName = "routeplanEngine")
 public interface routeplanEngineLib extends Library {
 
     ////////////////////////////////////////////////////////////////////////////////////
